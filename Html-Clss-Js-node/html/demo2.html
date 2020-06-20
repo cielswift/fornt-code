@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>列表标签</title>
+</head>
+<body>
+    <dl>         <!--列表标签-->
+        <dt>上层项目内容</dt>
+            <dd>下层项目内容</dd>
+            <dd>下层项目内容</dd> <!--dd在网页中有自动缩进的效果-->
+        <dt>上层项目内容</dt>
+            <dd>下层项目内容</dd>
+            <dd>下层项目内容</dd>
+    </dl>
+    <hr/>
+    <ul type="square">  <!--ul 无序的,ol有序的,他们的子项都是li也有缩进效果,circle空心圆,square方框-->
+        <li><font color="red" size ="5">无序的项目列表</font></li>
+        <li><font color="yellow" size ="5"> 无序的项目列表</font></li>
+        <li><a href="http://www.google.com"> </a> 谷歌一下</li>
+    </ul>
+    <ol type="A">  //排序方式
+        <li><font color="#8a2be2" size ="5">有序的项目列表</font></li>
+        <li><font color="blue" size="5">有序的项目列表 </font></li>
+        <ol type="1"> //排序方式
+            <li><a href="http://www.eclipse.org"> </a>eclipse一下</li>
+            <li><a href="http://www.oracle.com"></a> oracle一下</li>
+        </ol>
+    </ol>
+    <hr/>
+    <img src="image\ec6.jpg" height="300px" width = "600px" border="7" title="绿色的" alt="图片未显示" />
+    <!--链接图片,并调整大小(默认px为单位,但是css必须加单位),和边框黑边 已经鼠标放在图片上的说明文字 -->
+    <p>测试文字<img src="image\ec6.jpg" height="100px" align="right" /></p>
+        <!--配合p标签让图片居于文字的左或右显示,以文字参照来显示-->
+    <hr/>
+
+    <video src="" controls>
+        视频文件
+    </video>
+
+    <hr size="2"/>
+    <div>
+        <address>
+            地址标签,字是斜体
+        </address>
+    </div>
+    <del>
+        被删除的文字
+    </del>
+    <em>
+        强调的内容或关键字,斜体显示
+    </em>
+    <strong>
+        强调的内容或关键字,粗体显示,比em更强调;
+    </strong>
+</body>
+</html>

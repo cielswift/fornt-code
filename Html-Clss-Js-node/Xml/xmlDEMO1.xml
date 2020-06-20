@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="a.css"?>
+<!--<!DOCTYPE person SYSTEM "constraint.dtd">-->
+        <!--(第一种方式,导入外部dtd)-->
+
+
+<!DOCTYPE person [
+        <!ELEMENT person (name+)>
+        <!ELEMENT name (#PCDATA)>
+        <!ENTITY TEST "HAHAHA">
+        ]>
+        <!--第二种方式内部直接写tdt,还可以定义实体-->
+
+<!--<!DOCTYPE person PUBLIC "a.dtd" "http:www.aaa.com/a.dtd">-->
+<!--第三种方式,导入网络dtd-->
+
+
+<!--1 再不同系统间传输;表示生活关系;用在配置文件中></再不同系统间传输-->
+<!--2 一个xml文件有且只有一个根标签,这个xml只能有一个是person-->
+<!--3 xml会把空格和换行都进行解析,所以下面两个是不一样的-->
+<!--<a>-->
+    <!--aaa-->
+<!--</a>-->
+<!--<a>aaa</a>-->
+<!--4 xml区分大小写,标签不能以数字和_以及xml,Xml,XML开头,标签不能包含空格和:号-->
+<!--5 标签属性可以定义多个,-->
+<!--6 特殊符号需要转译和html一样,&lt;,&gt;-->
+<!--7  CDATA区中的内容不需要转译-->
+<!--8 <?xmlDEMO1.xml-stylesheet type="text/css" href="a.css"?> 可以引入css-->
+
+<!--9 xml约束dtd和schema-->
+<person>
+    <name>CIEL</name>
+
+    <name>&TEST;</name>
+
+
+</person>
+
+
+<!--xml的解析方式有dom和sax-->
+    <!--DOM 解析如果文件过大会造成内存溢出;但是很方便进行增删改操作;-->
+    <!--SAX 一行一行边读边解析,解析到一个对象就返回对象名称,不会内存溢出;SAX不能增删改操作;-->
+
+    <!--sun公司提供的解析器:jaxp (java的自带的)-->
+    <!--dom4组织提供的解析器 dom4j (用的最多)-->
+    <!--jdom组织提供的解析器 jodm-->

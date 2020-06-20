@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点的层次关系</title>
+    <style type="text/css">
+        div{
+            border: #15fffa 2px solid;
+            width: 500px;
+            height: 50px;
+        }
+        #d1{
+            background-color: #ff0024;
+        }
+        #d2{
+            background-color: chocolate;
+        }
+        #d3{
+            background-color: aquamarine;
+        }
+        #d4{
+            background-color: #faf16f;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        function excel() {
+            var oTab = window.document.getElementById("having");
+            var oF = oTab.parentNode;  //获取父节点;
+            alert(oF.nodeName);
+            var oS = oTab.childNodes; //获取子节点,子节点可能有多个,所以返回数组;
+            alert(oS[1].nodeName);
+
+            oTab.getElementsByTagName("tr"); //也可以获取所有的子节点;返回数组
+            oTab.firstChild;  //得到第一个子节点
+            oTab.lastChild; //得到最后一个子节点;
+
+            var oBu = oTab.previousSibling; //获取上一个兄弟节点;
+            alert(oBu.nodeName);
+            var obd = oTab.nextSibling;  //获取下一个兄弟节点;
+            alert(obd.nodeName);       //上兄弟节点尽量少用,因为浏览器差异导致出现#text空文本节点;
+        }
+    </script>
+    <input type="button" value="fuck life" onclick="excel()"/>
+
+    <!--<div> ff </div>-->
+        <!--<table id="having">-->
+            <!--<tr>-->
+                <!--<td>name</td>-->
+                <!--<td>age</td>-->
+            <!--</tr>-->
+        <!--</table>-->
+    <!--<div> </div>-->
+    <!--<ul>-->
+        <!--<li>java</li>-->
+    <!--</ul>-->
+    <div id="d1">
+        is null;
+    </div>
+    <div id="d2">
+        这是d2;
+    </div>
+    <div id="d3">
+        d3在这;
+    </div>
+    <div id="d4">
+        d4;
+    </div>
+    <p id="va">
+        <div id="vb">
+            水水水水水水水水水水
+        </div>
+
+    </p>
+    <script type="text/javascript">
+        function creatk() {
+            var oText = window.document.createTextNode("新的节点");//1;创建一个新的文本节点;并返回
+                                                //这种方法和.innerHTML类似,但是会作为纯文本输出,不会解释执行;
+            var oDiv1 = window.document.getElementById("d1");  //获取d1节点;
+            oDiv1.appendChild(oText); //在d1节点里添加新子节点;相当于添加新的文本内容;
+            ////////////////////////////////////////////////////////////////////////////////
+            var oBut = window.document.createElement("input");  //创建一个标签节点;
+            oBut.type="button";  //修改标签的类型为按钮;
+            oBut.value = "new Button";
+            var oDiv1 = window.document.getElementById("d1");  //获取d1节点
+            oDiv1.appendChild(oBut);//在d1节点里添加新标签子节点;相当于添加子标签;
+            /////////////////////////////////////////////////////////////////////////////
+            var oDiv1 = window.document.getElementById("d1"); //获取d1节点
+            //oDiv1.innerHTML="hahahhaha";  //利用标签的自身属性设置内容;会覆盖;
+           oDiv1.innerHTML="<a href='http://www.sex.com'>sex</a>";
+
+            //oDiv1.setAttribute("name","name"); 设置标签的属性
+            //oDiv1.setAttribute("value","zhangsan");
+        }
+        function insertNode(){
+            var oDiv = window.document.getElementById("vb");
+            var oBut = window.document.createElement("div");
+            oBut.innerHTML="火火火火火火火火火火火火火火火火";
+            oDiv.parentNode.insertBefore(oBut,oDiv); //再(oDiv)节点前添加节点(oBut);必须通过父节点添加;
+        }
+        function deletek() {
+             var oDiv2 = window.document.getElementById("d2");//获取d2节点
+             oDiv2.parentNode.removeChild(oDiv2);//先获取父节点对象,然后用父节点删除子节点,(删除自己)(把自己传入;删除自己)
+        }
+        function updatek() {
+            var oDiv3 = window.document.getElementById("d3");
+            var oDiv1 = window.document.getElementById("d1");
+          // oDiv1.parentNode.replaceChild(oDiv3,oDiv1);
+            //先获取父节点,然后用父节点对象来替换两个子节点; 把d1替换为d3,d1会消失;t3到t1的位置上;t4补位;
+            var oD3Copy = oDiv3.cloneNode(true); //复制一个d3节点对象,true表示也会复制这个节点对象的子节点;
+             oDiv1.parentNode.replaceChild(oD3Copy,oDiv1); //然后用复制出来的节点来替换;这样就有两个t3了;
+        }
+    </script>
+    <input type="button" value="create..." onclick="creatk()"/>
+  <input type="button" value="delete..." onclick="deletek()"/>
+  <input type="button" value="update..." onclick="updatek()"/>
+    <input type="button" value="insert..." onclick="insertNode()"/>
+</body>
+</html>

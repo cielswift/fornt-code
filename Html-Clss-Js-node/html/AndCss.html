@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>  和css相结合的4中方式</title>
+
+   <!-- 2 使用html标签标识css代码;用;隔开;并且标识这段代码作用于这个页面所有的div区域上(可以继续添加其他标签);
+         由上而下, 而且一般放在head标签里,先加载; 重复的样式已最后加载的为主(覆盖),不重复的样式保留-->
+
+   <!-- <style type="text/css">
+        div
+        { background-color:#000;color:#FFF
+        }
+    </style>-->
+
+    <!--3 把已有的样式文件,(css)文件关联进来 <可以导入多个css文件>-->
+    <!-- 或者一个css文件可以导入其他的css文件;然后直接导入这个总的css文件-->
+   <!-- <style type="text/css">
+        @import url(AndCssISFile.css);
+    </style>  -->
+    <!--
+    <style type="text/css">
+        @import url(AndCssISFile2.css);
+    </style> -->
+
+    <!--4 使用link代码链接的css-->
+    <link rel="stylesheet" href="AndCssISFile2.css" type="text/css"/>
+
+    <script src="Jssdemo.js"></script>
+    <script>
+        alert("javascrip标签代码")
+    </script>
+</head>
+<body>
+     <!--1 每一个标签都有一个style样式属性,该属性的值就是css代码;属性和属性值用:链接,背景色和字体颜色用;隔开,后加载--->
+    <div style="background-color:blue;color: crimson">
+        这是一个div区域,没有特殊含义带换行
+    </div>
+
+    <div>
+        这是一个div区域,没有特殊含义带换行
+    </div>
+
+    <span>
+        这是一个span区域,没有特殊含义不带换行
+    </span>
+    <span>
+        这是一个span区域,没有特殊含义不带换行
+    </span>
+     <div>
+         这是一个div区域,没有特殊含义带换行
+     </div>
+    <hr/>
+    <p>
+        段落标签,前后有空行
+    </p>
+    <p>
+        段落标签,前后有空行
+    </p>
+</body>
+</html>

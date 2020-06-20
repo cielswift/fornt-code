@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局函数</title>
+</head>
+<body>
+    <input type="button" value="query" onclick="test()"/>
+</body>
+    <script type="text/javascript">
+        function test() {
+            var code = "alert('hello ciel')";
+            eval(code);   //全局函数,能直接执行字符串的js代码;
+            var co = encodeURI("夏培鑫");  //编码
+            document.write(co + "<br/>");
+            var te = decodeURI(co);  //解码
+            document.write(te + "<br/>");
+            var num = 99;
+            var lo = isNaN(num);  //是否是数字;数字是false,非数字是true;
+            document.write(lo + "<br/>");
+            parseInt("965"); //字符串转数字
+        }
+
+    </script>
+</html>

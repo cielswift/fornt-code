@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>行颜色间隔显示</title>
+    <style type="text/css">
+        @import "tableStyle.css";
+        /*预定义两个间隔样式*/
+        .one{
+            background-color: #32ff1e;
+        }
+        .two{
+            background-color: #26fff3;
+        }
+
+        /*预定义高亮*/
+        .height{
+            background-color: #ffe843;
+        }
+        .
+    </style>
+    <script type="text/javascript">
+        var oldColor;  //原来的颜色
+
+        function setRowColor(){
+            //因为要操作行,所以先获取表格对象
+            //获取所有行,给所有行指定样式;
+            var oTab = document.getElementsByTagName("table")[0];
+            var oRows = oTab.rows;  //获得所有行数的集合;
+            for (var i=1;i<oRows.length;i++){
+                if (i%2!=0){
+                    oRows[i].className="one";
+                }else{
+                    oRows[i].className="two";
+                }
+
+                oRows[i].onmouseover = function () { //给每一行添加两个事件处理方式(鼠标悬停)
+                    oldColor=this.className;   //这个this代表当前行对象,oRows[i];  oldColor=one;
+                    this.className="height";
+                }
+                oRows[i].onmouseout = function () { //(鼠标离开)
+                    this.className=oldColor;
+                }
+            }
+        }
+
+        // onload = function () {  //onload会在页面加载完成后自动执行js方法;
+        //     setRowColor();
+        // }
+
+        //思路,排序需要数组,获取需要排序的行数组;
+        //对数组每一行的年龄的单元格进行比较,并完成行对象在数组中的位置置换;
+        //把排好序的数组重新添加到表格;
+
+        function sort(){
+            var oTab = document.getElementsByTagName("table")[0];
+            var oRows = oTab.rows;
+
+            //定义一个数组存储需要排序的行对象;存入的是行对象的内存地址;
+            var trArrs  = [];
+
+            //把行对象存储到数组中;  //从1开始,因为第1行是标题行
+            for (var i=1;i<oRows.length;i++){
+                trArrs[i-1]=oRows[i];
+            }
+
+            //进行排序;cells[1]行对象里的第一个单元格,innerHTML单元格里的文本;
+            for (var j=0;j<trArrs.length-1;j++){
+                for (var k=j+1;k<trArrs.length;k++){
+                    if(trArrs[j].cells[1].innerHTML>trArrs[k].cells[1].innerHTML){
+                       var temp = trArrs[j];
+                        trArrs[j]=trArrs[k];
+                        trArrs[k]=temp;
+                    }
+                }
+            }
+
+
+            //把排完序的行对象添加为表格;
+            for (var m=0;m<trArrs.length;m++){
+                trArrs[m].parentNode.appendChild(trArrs[m]); //用trArrs[m]的父节点添加trArrs[m];
+                //数组里存的原来的行对象的内存地址;appendChild现在其实就是把原来里面有的向末尾处添加;
+                //没有删除原来的对象,行对象的地址重新添加回表格了;
+            }
+
+        }
+
+
+
+
+
+
+    </script>
+</head>
+<body onload = setRowColor()>  <!--onload另一种用法;-->
+<table>
+    <tr>
+        <th>Name</th>
+        <th> <a href="javascript:void(0)" onclick="sort()"/> Age </th>
+        <th>Sex</th>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>23</td>
+        <td>Man</td>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>25</td>
+        <td>Man</td>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>27</td>
+        <td>Man</td>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>21</td>
+        <td>Man</td>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>17</td>
+        <td>Man</td>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>22</td>
+        <td>Man</td>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>34</td>
+        <td>Man</td>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>56</td>
+        <td>Man</td>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>76</td>
+        <td>Man</td>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>22</td>
+        <td>Man</td>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>39</td>
+        <td>Man</td>
+    </tr>
+    <tr>
+        <td>CielSwift</td>
+        <td>57</td>
+        <td>Man</td>
+    </tr>
+
+</table>
+
+
+</body>
+</html>

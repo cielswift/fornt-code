@@ -1,0 +1,50 @@
+<!--schema,一个xml可以有多个schema,使用名称空间区分-->
+<!--schema符合xml语法,而且schema可以定义整数类型,并且约束更加强大,但是语法更加复杂-->
+1 看xml中有多少个元素
+        <schema></schema>是schema文件的根节点
+
+<!--在schema里是w3c提供的属性和标签-->
+<!--<schema xmlns="http://www.w3.org/2001/XMLSchema" //表示是一个约束文件-->
+        <!--targetNamespace="http://www.example.org/teacher" //通过这个地址来引入约束文件-->
+        <!--xmlns:tns="http://www.example.org/teacher"-->
+        <!--elementFormDefault="qualified">-->  质量良好的
+<!--</schema>-->
+
+2 看简单元素还是复杂元素
+        复杂元素里加<complexType>
+                        <sequence>  sequence位置表示指示器:sequence元素必须按顺序来写
+                                                        :all表示一个元素只能出现一次
+                                                        :choice 表示只能出现其中一个子元素
+                                                        :any表示任意元素
+                            子元素 <element name="name" type="string" maxOccurs="unbounded"></element>
+                                          maxOccurs表示元素出现的次数:unbounded可以出现无限次
+
+                        </sequence>
+                    </complexType>
+
+
+<element name="teacher">
+<complexType>
+    <sequence>
+        <element name="name" type="string"></element>
+        <element name="age" type="int"></element>
+        <any></any>
+    </sequence>
+
+    <attribute name="id1" type="int" use="required"> </attribute>
+            属性约束,必须是复杂元素才能有:必须写在</complexType>前;
+                name属性名, type属性类型,use="required"属性必须要有
+</complexType>
+</element>
+
+
+
+
+3 xml引入约束文件
+<teacher xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  //表示是一个被约束的文件(就是xmlns加上-instance)
+         xmlns="http://www.example.org/teacher"     (就是targetNamespace;)
+         xsi:schemaLocation="http://www.example.org/teacher schema1.xsd" (就是targetNamespace加一个空格,再加上约束文件名)
+>
+<name>詹姆斯 高林</name>
+<age>45</age>
+</teacher>

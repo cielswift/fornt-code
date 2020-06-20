@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组,方法</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var arr = [18,12,37,41,52];   //数组长度可变,并且可以存放不同的类型;
+        arr[5]=true;
+        arr[6]="string";
+        alert(typeof(arr));  //object 类型;
+        alert(arr.length);  //数组长度
+        for (var i=0;i<arr.length;i++) {
+            document.write(arr[i]+"<br/>");
+        }
+        //////////////////////////////////////////
+        var arr2 = new Array(5);  //定义长度是5的数组;
+        var arr3 = new Array(5,6,7);  //定义里面有3个元素的数组;
+        //////////////////////////////////////////////////////////
+        function getSum(a,b) {
+           // arguments.length //如果多传入的参数,多传的参数在这个数组里;
+            return a+b;    //没有返回值return可以不写;
+        }
+       var f =  getSum(5,6);  //调用函数(如果传错参数,不会提示错误,而是运算错误,未定义)
+        alert(f);
+
+        //getSum;           //如果不写括号,想当于引用了这个函数代表的对象; 就是两个变量都指向了这个函数对象;
+        var io = getSum;
+        var pl = io(5,6); //io也代表了getSum这个方法; 想当于这个函数对象有两个函数名称;
+        alert(pl);
+////////////////////////////////////////////////////////////////////////////////////////
+        var sum = new Function ("x,y","var all; all=x+y; return all;");  //动态函数;
+        ///////////////////////////////////////////////////////////////////////////////
+       var sf = function(a,b) {
+            return a+b;
+        }
+        alert(sf(5,2));         //匿名函数;
+
+
+
+        var getMax =function (arr) {
+            var max=arr[0];
+            for (var i=0;i<arr.length;i++){
+                if (arr[i]>max){
+                    max=arr[i]
+                }
+            }
+            return max;
+        }
+         var getMin =function (arr) {
+            var min=arr[0];
+            for (var i=0;i<arr.length;i++){
+                if (arr[i]<min){
+                    min=arr[i]
+                }
+            }
+            return min;
+        }
+        var sort = function (arr) {
+            for (var i=0;i<arr.length-1;i++){
+                for (var x=i+1;x<arr.length;x++){
+                    if (arr[i]>arr[x]){
+                        var temp = arr[i];
+                        arr[i]=arr[x];
+                        arr[x]=temp;
+                    }
+                }
+            }
+        }
+        var seek = function (arr,target) {
+            var max = arr.length-1;
+            var min = 0
+            var mid;
+            while(max>=min){
+               mid=(max+min)/2;
+               if (target>arr[mid]){
+                   min=mid+1;
+               }
+               else if(target<arr[mid]){
+                   max=mid-1;
+               }
+               else
+               {
+                   return mid
+               }
+            }
+            return min+1;
+        }
+    var reverse = function (arr) {
+        var newArr = new Array(arr.length);
+        for (var i=0,x=arr.length-1;i<arr.length;i++,x--){
+            newArr[i]=arr[x];
+        }
+        return newArr;
+    }
+
+    var arrs = [43,24,93,2,66,104,31,72];
+
+        sort(arrs);
+        for(var i=0;i<arrs.length;i++){
+            document.write(arrs[i]+"-");
+        }
+
+        var result = reverse(arrs);
+        for(var i=0;i<result.length;i++){
+            document.write(result[i]+"-");
+        }
+
+
+
+
+    </script>
+</body>
+</html>

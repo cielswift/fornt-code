@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在页面创建一个5行6列的表格</title>
+    <style type="text/css">
+       @import url("tableStyle.css");
+    </style>
+    <script type="text/javascript">
+        //可以通过创建元素的方式来完成;
+        function createTable(){
+            var oTable = document.createElement("table"); //创建表格节点
+            var oTbody = document.createElement("tbody");  //创建tbody节点
+            var oTr = document.createElement("tr"); //创建行节点
+            var oTd = document.createElement("td"); //创建单元格节点
+            oTd.innerHTML = "这是一个单元格"   //在td里写入文本
+            //让这些节点有关系,进行指定层次的节点添加;
+
+            oTr.appendChild(oTd);    //父节点添加字节点
+            oTable.appendChild(oTr);//父节点添加字节点
+            oTable.appendChild(oTbody);//父节点添加字节点
+
+            document.getElementsByTagName("div")[0].appendChild(oTable);  //把table标签添加到div标签中
+        }
+
+        //上面很麻烦,应该使用表格节点的方法来完成;
+       function tableFun(){
+           var oTable = document.createElement("table"); //创建表格节点
+          // oTable.id = "newTableId";  //设置id的值
+           oTable.setAttribute("id","newTableId") //也可以通过方法来设置
+
+           var ros = document.getElementsByName("rosnum")[0].value;
+           var col = document.getElementsByName("colnum")[0].value;
+
+           for (var i=1;i<=ros;i++) {  //循环一次创建一行
+               var oTr = oTable.insertRow();   //创建(插入)一个行,并返回;
+
+               for (var j = 1; j<=col; j++) { //循环一次创建一列
+                   var oTd = oTr.insertCell();  //创建添加新的单元格节点;
+                   oTd.innerHTML = i + "行:" + j + "列";
+               }
+           }
+           document.getElementsByTagName("div")[0].appendChild(oTable);  //根据标签名获得;返回数组;div添加子节点otable;
+           document.getElementsByName("crT")[0].disabled=true;    //根据name属性获得;返回数组
+                                                                //设置为true后无法再次点击;
+       }
+       function delRow(){
+           var oTable = document.getElementById("newTableId");  //根据id获得表格对象
+           if(oTable){ //如果表存在 非null就是true
+                var rowVal = document.getElementsByName("delrow")[0].value;
+                if(rowVal>=1 && rowVal<= oTable.rows.length) {  //oTable.rows返回表格所有的行的集合,是个数组.length获取长度
+                    oTable.deleteRow(rowVal-1);    //删除表格指定的行;
+                }else {
+                    alert("行不存在");
+                }
+           }else{
+               alert("表不存在");
+           }
+
+       }
+       //删除列就是删除每一行 同一个位置的单元格;
+        function delCol() {
+            var oTable = document.getElementById("newTableId");
+            if(oTable){
+                var colVal = document.getElementsByName("delcol")[0].value;
+
+                if(colVal>=1 && oTable.rows[0].cells.length) {  //oTable.rows[0].cells返回某一行的单元格集合;是个数组,length获取长度
+
+                    for (var i =0; i<oTable.rows.length;i++){  //遍历每一行
+                        oTable.rows[i].deleteCell(colVal-1);   //删除这一行的指定的单元格;  (oTable.rows[i]行对象)
+                    }
+
+                }else {
+                    alert("列不存在");
+                }
+            }else{
+                alert("表不存在");
+            }
+
+
+        }
+    </script>*
+</head>
+<body>
+        <!--事件源,比如按钮-->
+        <!--生成表格存储节点的位置-->
+    <input type="number" name="rosnum" /> 新建多少行 <input type="number" name="colnum"/> 新建多少列
+    <input type="button" name="crT" value="Create Table" onclick="tableFun()">
+        <hr/>
+    <input type="number" name="delrow" /> 删除此行 <input type="button" name="dlR" value="delrowfro" onclick="delRow()"> <br/>
+    <input type="number" name="delcol"/> 删除此列<input type="button" name="dlC" value="delcolfro" onclick="delCol()"> <br/>
+
+
+        <hr/>
+        <div>
+
+    </div>
+</body>
+</html>

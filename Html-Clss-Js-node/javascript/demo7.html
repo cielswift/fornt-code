@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js特有语句,自定义对象,全局方法,</title>
+</head>
+<body>
+        <script type="text/javascript">
+            // var str = "xia pei xin";
+            // with(str){        //在with语句里,传入了对象后,不需要在用对象调用方法了;
+            //     var result = length;
+            //     var txt = substring(0,4);
+            //     alert(result);
+            //     alert(txt);
+            // }
+            ////////////////////////////////
+            var arrf = ["sd","s","de","pl"];   //特殊for循环,遍历一个对象;
+            for (i in arrf){
+                document.write(arrf[i]+"<br/>");
+            }
+            //////////////////////////////////////////////////////////////////
+            function Human() {           //相当于js用来描述对象的类(或者说构造器更确切);用函数模拟面向对象的描述;
+                alert("hello Human");
+            }
+            var man = new Human();    //创建这个对象;
+            man.name = "ciel";       //动态的添加属性和方法;
+            man.age = 22;
+            man.speak = function () {
+                alert("hello,i im"+this.name);
+            }
+            man.speak();
+///////////////////////////////////////////////////////////////////////////////
+            function America(name,age) {
+                this.name=name;     //在构造函数里添加属性,方法,并且为属性赋值;
+                this.age=age;
+                this.getName = function () {
+                    return this.name;
+                }
+            }
+            var ame = new America("tom",25);
+           alert(ame.getName());
+////////////////////////////////////////////////////////////////////////////////////////
+          var person={
+              "name":"jack",          //定义一个实体对象; 封装键值对,属性:值;
+              "getName":function () {
+                  return this.name;
+              }
+            }
+            alert(person.getName());
+            alert(person["name"]);  //对象通过键返回值;(第二种取出方式)
+
+            for (i in ame){          //返回对象的属性,
+                document.write(i+ame[i]+"<br/>");
+            }
+            ///////////////////////////////////////
+            var map = {        //实现map集合;
+                1:"a",2:"b",3:"c","name":"plm",
+                "get":function () {
+                    return "get out";
+                }
+            }
+            var edc = map[3];
+            var edf = map.name;
+            alert(edc+edf);
+            alert(map.get());
+            ////////////////////////////////////////////////////////////////
+            var oHuman  = object;   //命名方式;
+            var bIs  = true;
+            var iCount = 99;
+            var sName = "ana";
+
+
+
+
+
+            document.write("<hr/>");
+            var re  = Math.PI;  //静态方法返回pi
+            var rt = Math.floor(12.94);  //去掉小数部分,返回整数
+            var ry = Math.round(12.94); //四舍五入
+            var ru = Math.ceil(12.94);  //去掉小数部分,返回整数+1;
+            var ri = Math.pow(9,19);   //返回9的19次方;
+            document.write(rt+"<br/>");
+            document.write(ry+"<br/>");
+            document.write(ri+"<br/>");
+            var dom = Math.random(); //返回0到1的随机数;不包含1;
+            document.write(dom+"<br/>");
+            document.write("<hr/>");
+            //////////////////////////////////////////////////////////////////////////////////
+            var za =    parseInt(954.35);    //全局方法,不属于任何一个对象;小数或者字符串转为整数;
+            document.write(za+"<br/>");
+            var zs = parseInt("abc");    //返回一个nan非法值;
+            document.write(isNaN(zs)+"<br/>");  //判断是否为非法值;
+            var zs = parseInt("12zbv");    //会把前面的12转为整数,后面的的非法值舍弃;
+             document.write(zs+"<br/>");
+            var zc = parseInt("110",2);   //把2进制的110,转为10进制; (其他进制转10进制)
+            document.write(zc+"<br/>");
+            var zb = new Number(60).toString(2);  //把10进制转2进制, 10进制转其他进制;
+            document.write(zb+"<br/>");
+            var zb = 60;                        //js基于对象,任何东西底层都是对象;
+            zb.toString(2);
+        </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>完成一个好友列表的标签</title>
+    <style>
+        table ul{
+            list-style: none;   /*把列表中的序号去掉,取消缩进*/
+            display: none;      /*让ul里的内容不显示,block是显示*/
+            padding: 0px;
+        }
+        table{
+            border: #4747ff 2px solid;  /*对表格的框线进行定义*/
+            width:300px;
+        }
+        table td{
+            /*对单元格的框线进行定义*/
+            border: #4747ff 2px solid;
+            background-color: #3dff47;
+        }
+        table td a:link,table td a:visited{
+            /*设置超连接字体颜色*/
+            color:deeppink;
+            /*取消超链接下划线*/
+            text-decoration: none;
+        }
+        /*预定义样式*/
+        .open{
+            display: block;
+        }
+        .close{
+            display: none;
+        }
+
+    </style>
+    <script type="text/javascript">
+        function show(node){
+            var oTdNode = node.parentNode;  //获得当前节点的父类节点; (节点名一般以o开头)
+             var oUlNode = oTdNode.getElementsByTagName("ul")[0]; //获得兄弟节点ul;
+            //alert(oUlNode.nodeName);
+            if(oUlNode.className=="open"){
+                oUlNode.className="close";
+            }else{                        //因为默认ul默认没有className属性,所有不是open就直接展开;
+                oUlNode.className="open";
+            }
+        }
+        //一次只展开一个节点;
+        function showOne(node){
+            var oTdNode = node.parentNode;  //获得当前节点的父类节点; (节点名一般以o开头)
+            var oUlNode = oTdNode.getElementsByTagName("ul")[0]; //获得兄弟节点ul;
+
+            var oAllNodes = document.getElementById("friend"); //获得id节点下的所有子节点;(返回数组)
+            var oUlNodes =oAllNodes.getElementsByTagName("ul");  //获得子节点中的所有ul节点 (返回数组)
+            for (var i=0;i<oUlNodes.length;i++){
+                if (oUlNodes[i]==oUlNode){
+                    if(oUlNode.className=="open"){
+                        oUlNode.className="close";
+                    }else{                        //因为默认ul默认没有className属性,所有不是open就直接展开;
+                        oUlNode.className="open";
+                    }
+                }else{
+                    oUlNodes[i].className="close";
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <!--完成一个好友列表的标签-->
+    <table id="friend">
+        <tr>
+        <td> <a href="javascript:void(0)" onclick="showOne(this)"> Friend the Enum(好友菜单) </a>
+            <ul>
+                <li> 张三 </li> <li> Tom </li> <li> Jack </li>
+            </ul>
+        </td>
+        </tr>
+        <tr>
+            <td> <a href="javascript:void(0)" onclick="showOne(this)"> Friend the Enum(好友菜单) </a>
+                <ul>
+                    <li> 张三 </li> <li> Tom </li> <li> Jack </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td> <a href="javascript:void(0)" onclick="showOne(this)"> Friend the Enum(好友菜单) </a>
+                <ul>
+                    <li> 张三 </li> <li> Tom </li> <li> Jack </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

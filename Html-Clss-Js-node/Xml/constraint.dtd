@@ -1,0 +1,48 @@
+<!--对xml进行约束的文件-->
+<!--看xml有多少个元素,有几个元素,写几个<!ELEMENT>;-->
+    <!--简单元素:没有子元素-->
+    <!--复杂元素:有子元素-->
+
+        <!--简单元素 : #PCDATA 约束元素内容为字符串-->
+                <!--:EMPTY  必须为空不能有内容-->
+                <!--:ANY 内容任意类型-->
+        <!--复杂元素:(name) 子元素只能出现一次;-->
+                <!--(name+) 子元素出现1次或多次-->
+                <!--(age?)  子元素出现0次或1次-->
+                <!--(city*)  子元素出现0次或多次-->
+            <!--复杂元素的括号里是简单元素的顺序,name第一.age第二...-->
+        <!--<!ELEMENT person (name+|age?|city*|school)> ;把,换成|表示只能出现这四个元素中的一个-->
+
+<!ELEMENT person (name+,age?,city*,school,country)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT age  (#PCDATA)>
+ <!ELEMENT city EMPTY>
+  <!ELEMENT school ANY>
+<!ELEMENT country (#PCDATA)>
+
+<!--<!ENTITY TEST "HAHAHA">-->
+ <!--xml可以引用这个实体,作为元素的内容;只能写再内部dtd中-->
+
+                              <!--<!ATTLIST 元素名称 属性名称 属性类型 属性约束>-->
+<!ATTLIST country ID1 CDATA #REQUIRED>
+<!--元素必须要有ID1属性; CDATA为字符串 #REQUIRED表示必须要有-->
+
+ <!ATTLIST school ID2 (AA|BB|CC) #REQUIRED>
+   <!--元素必须要有ID2属性,属性类型是枚举中的一个-->
+
+   <!ATTLIST age ID3 CDATA #FIXED "23">
+    <!--固定值.只能是"23"-->
+
+    <!ATTLIST name ID4 CDATA "ciel">
+       <!--直接值:-->
+
+            <!--属性类型 : CDATA 字符串 属性类型只能是字符串-->
+                    <!--:枚举 (没有关键字) ,属性类型是枚举中的一个-->
+                    <!--:ID 属性类型只能以字母和下划线开头-->
+
+            <!--属性约束 :#REQUIRED  属性必须存在 (必须写上属性名和属性值)-->
+                    <!--:#IMPLIED  属性可有可无-->
+                    <!--:#FIXED 固定值-->
+                    <!--: 直接值 相当于一个默认值,如果不写,默认这个值,如果写了属性名和值,会覆盖这个默认值;-->
+
+

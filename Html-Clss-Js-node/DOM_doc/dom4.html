@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻</title>
+    <style type="text/css">
+        #newsText{
+            width: 800px;
+            border: #0cccc9 5px double;
+            padding: 20px;
+        }
+        .default{
+            color: black;
+            background-color: #fffa98;
+        }
+        .max{
+            color: #faf16f;
+            background-color: #32ff1e;
+        }
+        .mid{
+            color: #1f9ffa;
+            background-color: #ff2f26;
+        }
+        .min{
+            color: #fa23f6;
+            background-color: #38fffa;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        function change(bs) {
+            var oFont = window.document.getElementById("newsText");
+             // oFont.style="background-color:green"; //直接修改节点对象style属性的css代码;
+            oFont.style.fontSize=bs+"px";  //获取div标签的style属性对象,通过这个对象修改字体大小属性;
+            //oFont.style.color="red";
+            if(bs==23){
+                oFont.className="max";      //dom中用classname代表html这个class这个属性名;
+            }else if(bs==17){
+                oFont.className="mid";
+            }else if(bs==10){
+                oFont.className="min";
+            }
+        }
+    </script>
+    <h1>新闻的标题</h1>
+    <a href="javascript:void(0)" onclick="change(23)">大字体</a>    <!--取消超链接默认的点击效果!,添加新事件处理-->
+    <a href="javascript:void(0)" onclick="change(17)">中字体</a>
+    <a href="javascript:void(0)" onclick="change(10)">小字体</a>
+    <div class="default" id="newsText">
+   	曲建胜	男	居民身份证	37063119620909801X	户主	是		牟平区姜格庄街道办事处北王家疃<br/>
+    曲珊珊	女	居民身份证	370612198711188045	女儿	是		牟平区姜格庄街道办事处北王家疃<br/>
+    邹立国	男	居民身份证	370631195205128010	户主	是		牟平区姜格庄街道办事处北王家疃<br/>
+    曲玉英	女	居民身份证	370631195404118026	妻子	是		牟平区姜格庄街道办事处北王家疃<br/>
+    邹晓飞	男	居民身份证	370612198106138015	次子	是		牟平区姜格庄街道办事处北王家疃<br/>
+    邹濠键	男	居民身份证	370612200902029231	孙子	是		牟平区姜格庄街道办事处北王家疃<br/>
+    于卫卫	女	居民身份证	370612198210158024	儿媳	是		牟平区姜格庄街道办事处北王家疃<br/>
+    曲建胜	男	居民身份证	37063119620909801X	户主	是		牟平区姜格庄街道办事处北王家疃<br/>
+    </div>
+</body>
+</html>

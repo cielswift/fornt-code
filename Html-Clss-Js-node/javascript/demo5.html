@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常用对象 array</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var a1 = new Array("a","f","j","l");
+        var a2 = new Array("i","u","v");
+        var a3 = a1.concat("g",a2);  //把一个元素和另一个数组中的全部元素装到a3这个数组里;
+        alert(a3.toString());
+
+        var s1 = a1.join("="); //把数组转换为字符串,并用传入的符号分隔开;
+        alert(s1);
+
+        var s2 = a1.pop();  //移除数组中的最后一个元素并返回该元素
+        var s2 = a1.shift(); //移除数组中的第一个元素并返回该元素
+        alert(s2);
+
+        var a5 = a1.push(a1,a2);  //把另一数组当初元素保存,数组中的数组;二维数组,并返回数组长度;
+        document.write(a5);
+
+        var a6 = a1.reverse(); //反转数组.返回被反转的数组;
+        var a7 = a1.slice(0,5);  //截取数组,返回新数组,包含头,不包含尾部;
+        var a8 = a1.sort();   //把数组排序,然后返回;
+
+        var a9 = a1.splice(0,3,"java","sql","javascript","python"); //删除并返回从0开始,往后数3个的元素;并替换任意个数的元素;
+        document.write(a9+"<br/>");
+        document.write(a1);
+
+        a1.unshift("start is her"); //将指定的元素插入数组开始位置并返回该数组。
+        document.write(a1);
+
+        var test1 = new Array("ciel","john","tom","jack","ana");
+        Array.prototype.getMax=function () {
+
+        }   //给数组添加新功能;
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> 超链接</title>
+</head>
+<body>
+    <a name=top>顶部位置</a>  <!--定位标记-->
+    <a href="image\ec6.jpg" target="_blank"> 看图片</a>
+    <!--href只向的值不同解析的效果也不同,如果没有指定协议,是通过默认的file(文件)协议-->
+    <a href="http://www.google.com"> go to GOOGLE</a>  <br/>
+
+    <a href="http://www.google.com" target="_blank"> go to GOOGLE</a> <!-- 用新窗口打开-->
+    <a href="mailto:xiapeixin202@qq.com"> 联系我们</a>
+    <hr/>
+
+    <a href="magnet:?xt=urn:btih:50B3E2F797FB3CCE8847D5BA82A730FCEE122ECB"> 迅雷下载协议</a>
+    <a href="thunder:?xt=urn:btih:50B3E2F797FB3CCE8847D5BA82A730FCEE122ECB">迅雷下载协议</a>
+    <a href="javasrcipt:void(0)" onclick="alert('弹窗')"> 一个超链接</a>
+    <hr/>
+    <img src="image\ec6.jpg" height="5000" width="100"/>
+    <hr/>
+    <a name=center>中间位置</a>  <!--定位标记-->
+
+    <img src="image\ec6.jpg" height="5000" width="1000"/>
+
+    <a href="#top">回到顶部位置</a>
+    <a href="#center">回到中间位置</a>
+
+    <a href="demo.html"> sa</a>
+
+    <a href="#" title="鼠标悬停显示">一个#号直接返回顶部</a><br/>
+    <a href="#" ></a>  #占位符;
+
+</body>
+</html>

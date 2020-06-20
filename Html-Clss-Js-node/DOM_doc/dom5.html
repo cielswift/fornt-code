@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>展开闭合列表</title>
+
+    <style type="text/css">
+        dl dd {
+            margin: 0px;  //取消缩进
+        }
+        dl{
+            background-color: #1f9ffa;
+            height: 20px;   //指定dl区域为16px;
+            //overflow: hidden;  //overflow设置当前对象超过指定宽度时如何管理内容;
+                                //visible默认--auto在必要时剪裁--hidden不显示超过的内容--scroll总是显示滚动条
+        }
+        /*预定义一些样式,类选择器,方便给标签进行动态加载*/
+        .open{
+            overflow: visible;
+        }
+        .close{
+            overflow: hidden;
+        }
+    </style>
+    <script type="text/javascript">
+        var isShow = true;
+        function list(){
+            //思路,就是把dl节点的overflow变成visible;先获取dl节点;改变节点的style overflow属性;
+            var dlPiont = document.getElementsByTagName("dl")[0]; //获取节点
+            if(isShow){
+                dlPiont.style.overflow ="visible";  //设置属性
+                isShow=false;
+            }else{
+                dlPiont.style.overflow ="hidden";
+                isShow=true;
+            }
+        }
+        //重新定义方法,降低html和css的耦合性;
+        function listTwo() {
+            var dlPiont = document.getElementsByTagName("dl")[0]; //获取节点
+            if (dlPiont.className=="close"){     //通过获得className属性进行预定义样式的修改
+                dlPiont.className="open";
+            }else if (dlPiont.className=="open"){
+                dlPiont.className="close";
+            }
+        }
+        //重新定义方法,实现多个列表的展开闭合;
+        function listThree(nodeObj){
+            //alert(nodeObj.nodeName);      //当前节点对象,dt
+            var fatherNode = nodeObj.parentNode;  //获得当前节点的父类节点;
+            if (fatherNode.className=="close"){     //通过获得className属性进行预定义样式的修改
+                fatherNode.className="open";
+            }else if (fatherNode.className=="open"){
+                fatherNode.className="close";
+            }
+        }
+        //重新定义,一次只需要开一个列表,其他的都关闭;怎么保证开一个,关闭其他呢?
+        //思路,获取所有dl节点,遍历这些节点,只对当前的dl进行展开;其他节点都进行闭合操作;
+        function listFour(nodeObj){
+            var fatherNode = nodeObj.parentNode;  //获得当前节点的父类节点;
+            var allOtherFathers = document.getElementsByTagName("dl");  //获得所有的其他的父类节点;
+            for (var i =0;i<allOtherFathers.length;i++){     //遍历
+                if(allOtherFathers[i]==fatherNode){     //如果是当前父类节点就进行展开闭合操作
+                    if (fatherNode.className=="close"){
+                        fatherNode.className="open";
+                    }else if (fatherNode.className=="open"){
+                        fatherNode.className="close";
+                    }
+                }else{
+                    allOtherFathers[i].className="close";
+                }
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+<!--1标签封装数据
+    2定义样式css
+    3明确事件源,事件,处理节点
+    4明确具体处理方式,
+-->
+    <dl class="close">
+        <dt onclick="listFour(this)">显示条目1</dt>  <!--dt添加处理方式onclick-->
+            <dd>展开列表内容1</dd>
+            <dd>展开列表内容1</dd>
+            <dd>展开列表内容1</dd>
+            <dd>展开列表内容1</dd>
+    </dl>
+    <hr/>
+    <dl class="close">
+        <dt onclick="listFour(this)">显示条目2</dt>  <!--dt添加处理方式onclick-->
+        <dd>展开列表内容2</dd>
+        <dd>展开列表内容2</dd>
+        <dd>展开列表内容2</dd>
+        <dd>展开列表内容2</dd>
+    </dl>
+    <hr/>
+    <dl class="close">
+        <dt onclick="listFour(this)">显示条目3</dt>  <!--dt添加处理方式onclick-->
+        <dd>展开列表内容3</dd>
+        <dd>展开列表内容3</dd>
+        <dd>展开列表内容3</dd>
+        <dd>展开列表内容3</dd>
+    </dl>
+
+
+
+</body>
+</html>

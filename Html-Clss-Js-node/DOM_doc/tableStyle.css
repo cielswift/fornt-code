@@ -1,0 +1,11 @@
+table{
+    border: #32ff1e 1px solid;
+}
+table td{
+    border: #4747ff 1px solid;
+    padding: 10px 50px 10px 50px;
+}
+table th{
+    border: #ff2f26 1px solid;
+    padding: 4px 1px 1px 4px;
+}

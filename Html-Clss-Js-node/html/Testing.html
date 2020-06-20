@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> 表单格式化</title>
+</head>
+<body>
+    <form action="http://127.0.0.1:9697" method="post">
+        <table border="2" bordercolor="00ffff" width="300" bgcolor="#00ced1">
+            <tr>
+                <th colspan="2"> 注册表单</th>
+            </tr>
+            <tr>
+                <td>用户名称</td>
+                <td><input type="text" name="user" value=""> </td>
+            </tr>
+            <tr>
+                <td>输入密码</td>
+                <td><input type="passworld" name="pass" value=""> </td>
+            </tr>
+            <tr>
+                <td>确认密码</td>
+                <td> <input type="button" name="but" value="确认密码"> </td>
+            </tr>
+            <tr>
+                <td>选择性别</td>
+                <td> <input type="radio" name="sex" value="man"> MAN
+                    <input type="radio" name="sex" value="woman"> WOMAN
+                </td>
+            </tr>
+            <tr>
+                <td>选择技能</td>
+                <td> <input type="checkbox" name="skill" value="java"> Java
+                    <input type="checkbox" name="skill" value="sql"> Sql
+                    <input type="checkbox" name="skill" value="html"> Html </td>
+            </tr>
+            <tr>
+                <td>选择国家</td>
+                <td> <select name="country">
+                    <option value="us">
+                        美国
+                    </option>
+                    <option value="uk">
+                        英国
+                    </option>
+                    <option value="gm">
+                        德国
+                    </option>
+                </select></td>
+            </tr>
+            <tr>
+                <th> <input type="reset" value="清除"></th>
+                <th><input type="submit" value="发送"></th>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+<!--get 地址栏 http://127.0.0.1:9697/?user=aa&pass=aa&sex=man&skill=java&skill=sql&country=us-->
+<!--pose 地址栏 http://127.0.0.1:9697/-->
+<!--get提交的信息在地址栏中(请求行中),post提交的信息不在地址栏中,在请求体中(有空白行);-->
+<!--get提交对于敏感的信息不安全; post安全;-->
+<!--get提交对于大数据不行,因为地址栏信息有限;post可以提交大体积数据;-->
+<!--post提交服务的可以用request对象的setcharacterencoding方法设置码表;-->
+
+<!--和服务端的3中交互-->
+<!--1地址栏输入url地址 get-->
+<!--2超链接 get-->
+<!--3表单  get 和post-->
+
+<!--客户端和服务端都需要增强相校验;-->
+<!--127.0.0.1
+GET /?user=&pass=&country=us HTTP/1.1
+Accept: text/html, application/xhtml+xmlDEMO1.xml, image/jxr, */*
+Referer: http://localhost:63342/webdata/Testing.html
+Accept-Language: en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:9697
+Connection: Keep-Alive-->
+
+<!--
+127.0.0.1
+POST / HTTP/1.1
+Accept: text/html, application/xhtml+xmlDEMO1.xml, image/jxr, */*
+Referer: http://localhost:63342/webdata/Testing.html
+Accept-Language: en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:9697
+Content-Length: 54
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+user=a&pass=a&sex=man&skill=java&skill=html&country=us
+-->
+
+
+<!--//下面会出现一些(客户端发给服务端)请求头信息;-->
+<!--//		/127.0.0.1-->
+<!--//		GET / HTTP/1.1                     //(请求行)后面一般有/my/web/xx.html;请求的资源,路径; http1.1协议版本;  ;-->
+<!--//		Accept: text/html, application/xhtml+xml, image/jxr, */*       //剩下的(请求消息头);属性名:属性值(浏览器支持什么格式)-->
+<!--//		Accept-Language: zh-Hans-CN,zh-Hans;q=0.8,en-US;q=0.5,en;q=0.3  //告诉服务器,浏览器支持的语言;-->
+<!--//		User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko   //本机系统版本-->
+<!--//		Accept-Encoding: gzip, deflate  //告诉服务器,浏览器支持的压缩方式-->
+<!--//		Host: 127.0.0.1:7620   //浏览器想要访问的主机;-->
+<!--//		Connection: Keep-Alive  //保持存活-->
+
+<!--//请求头和请求体之间有一个空行;-->
+<!--//下面是请求体 (自定义的信息)-->
+
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+<!--//服务端发给客户端的信息;(响应头)-->
+
+<!--//		HTTP/1.1 400   //状态码,200代表正常,404没找到,500无法请求完成-->
+<!--//		Content-Type: text/html;charset=utf-8   //应答属性,应答值;-->
+<!--//		Content-Language: en //语言-->
+<!--//		Content-Length: 1159 //正文字节长度-->
+<!--//		Da-->
+<!--//		te: Mon, 19 Feb 2018 13:54:26 GMT  //数据最后修改的时间-->
+<!--//		Connection: close-->
+
+<!--//应答头和应答体之间有一个空行;-->
+<!--//下面是应答体-->

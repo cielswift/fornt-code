@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>调查问卷</title>
+    <style type="text/css">
+        #show{
+            display: none;
+        }
+        .close{
+            display: none;
+        }
+        .open{
+            display: block;
+        }
+    </style>
+    <script type="text/javascript">
+        function print(oNde){
+            var oDiv = document.getElementById("show");
+            if(oNde.value=="yes"){
+                oDiv.style.display="block";
+            }else{
+                oDiv.style.display="none";
+            }
+        }
+        function showResult() {
+            //先清空结果
+            var oR1 = document.getElementById("result1");
+            var oR2 = document.getElementById("result2");
+            oR1.className="close";oR2.className="close";
+            //判断有没有被选中
+            var oShuis = document.getElementsByName("shuiguo");
+            var oJobs = document.getElementsByName("job");
+            var flag1 = false;var flag2 = false;
+            var value1; var value2;
+            for(var i=0;i<oShuis.length;i++){
+                if(oShuis[i].checked){
+                    flag1=true;
+                    value1=parseInt(oShuis[i].value);
+                    break;  //四选一,所以只要有一个被选中就跳出循环;
+                }
+            }
+            for(var i=0;i<oJobs.length;i++){
+                if(oJobs[i].checked){
+                    flag2=true;
+                    value2=parseInt(oJobs[i].value);
+                    break;
+                }
+            }
+            if(!(flag1&&flag2)){
+                alert("有题没做");
+                return;
+            }else{
+                if(value1+value2<=3){
+                    var oR = document.getElementById("result1");
+                    oR.className="open";
+                }else if(value1+value2>=4){
+                    var oR = document.getElementById("result2");
+                    oR.className="open";
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <h2>参与性格测试</h2>
+        <table>
+            <tr id="one">
+                <td>你喜欢的水果是什么?</td>
+                <td><input type="radio" name="shuiguo" value="1" />葡萄</td>
+                <td><input type="radio" name="shuiguo" value="2" />西瓜</td>
+                <td><input type="radio" name="shuiguo" value="3" />苹果</td>
+                <td><input type="radio" name="shuiguo" value="4" />香蕉</td>
+            </tr>
+            <tr id="two">
+                <td>你喜欢的工作是什么?</td>
+                <td><input type="radio" name="job" value="3" />IT</td>
+                <td><input type="radio" name="job" value="2" />建筑</td>
+                <td><input type="radio" name="job" value="1" />农业</td>
+                <td><input type="radio" name="job" value="4" />打猎</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <input type="button" value="查看你的测试结果" onclick="showResult()"/><br/>
+        <div id="result1" class="close">1-3:你的性格内向扭曲,建议...</div>
+        <div id="result2" class="close">4-6:你的性格外向分裂,建议...</div>
+    </div>
+    <hr/>
+    <div>
+    <b>是否参与问卷调查</b>
+    <input type="radio" name="investigate" value="yes" onclick="print(this)"/> 是
+    <input type="radio" name="investigate" value="no" checked="checked" onclick="print(this)"/> 否 <br/>
+    </div>
+    <div id="show">
+        你的姓名:
+        <input type="text" name="uName" /></br>
+        你的年龄:
+        <input type="text" name="uAge" /></br>
+        你的联系方式:
+        <input type="text" name="uTel" /></br>
+
+    </div>
+</body>
+</html>

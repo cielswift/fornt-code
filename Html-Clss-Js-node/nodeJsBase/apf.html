@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title> 测试中文编码</title>
+</head>
+
+<script src="./jquery-3.3.1.js"></script> 
+
+<body>
+  <ul id="ls">
+
+  </ul>
+  <!--
+  <div> 
+
+    {{each ci}}
+       
+   
+    <h6>{{$index}} _ {{$value.name}} _ {{$value.size}} _ {{$value.time}} _ {{$value.type}} </h6>
+      {{if $value.type == "file" }}
+            <span>fiel+++++++++</span>
+        {{else }}
+         <span>dir++++++++++++</span>
+      {{/if}}
+
+    {{/each}}
+
+  </div> -->
+
+  <a href="javascript:get_all_file()"> get all file Or Dir </a>
+  
+  <video src="./21.今天内容总结.mp4" controls="controls" height="350" width="600"></video> 
+
+</body>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+      $.get("/getfilelist",function(msg){
+        var t_x = JSON.parse(msg);   //反序列化
+
+        $.each(t_x,function(k,v){
+          $("<li></li>").html(v.size+"==>"+v.name+"==>"+v.type+"==>"+v.time).appendTo("#ls");
+        })
+
+      });
+    });
+
+</script>
+
+</html>

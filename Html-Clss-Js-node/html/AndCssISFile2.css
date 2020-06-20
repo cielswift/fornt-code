@@ -1,0 +1,10 @@
+/*
+    一个csss文件可以导入其他的css文件;然后直接导入这个总的css文件
+*/
+@import url(AndCssISFile.css);
+
+span
+{
+    background-color:blue;
+    color:moccasin;
+}

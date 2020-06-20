@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> id 选择关联组合(扩展选择器)</title>
+
+    <!--,span b关联选择器,只影响span中的b内容,选择器中的选择器.-->
+    <!--,.cc,p b组合选择器,把两个以上选择器组合起来,进行相同样式的定义,用,隔开-->
+   <style type="text/css">
+      span b
+       {
+           background-color: aqua;
+       }
+    .cc,p b
+    {
+        background-color:coral;
+    }
+
+   </style>
+
+</head>
+<body>
+    <div class="cc">
+         <b>夏</b>培鑫
+    </div>
+
+    <p>
+        <b>夏</b>
+        <i>培鑫</i>
+    </p>
+
+    <span>
+         <b>夏</b>
+         <i>培鑫</i>
+    </span>
+</body>
+</html>

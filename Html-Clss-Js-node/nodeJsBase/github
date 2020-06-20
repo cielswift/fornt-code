@@ -1,0 +1,11 @@
+resource 资源
+fork  复制  star 收藏  repository 仓库
+pull request 发起更新请求
+watch 关注
+
+git add a.java 提交到暂存区
+git commit -m 'aaaaaaaaaa' 提交到仓库
+git rm a.java  删除
+ 
+git clone https://github.com/cielswift/EmpSystem.git
+git push 提交到远程仓库

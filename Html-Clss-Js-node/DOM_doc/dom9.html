@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选商品列表</title>
+    <script type="text/javascript">
+        function getSum(){
+            //获取所有name为goods的复选框;checked并判断是否被选中,true表示被选中;
+            var oGoods = document.getElementsByName("goods");
+            var sum =0;
+
+            for (var i=0;i<oGoods.length;i++){
+               if(oGoods[i].checked){
+                    sum += parseInt(oGoods[i].value);
+               }
+            }
+
+            document.getElementById("sum").innerHTML=sum;
+        }
+
+        function allSelect(oNde) {
+            //把全选(框)的checked状态赋值给所有的goods的checked的状态;
+            var oGoods = document.getElementsByName("goods");
+            var allSel = oNde.checked;
+
+            for (var i=0;i<oGoods.length;i++){
+                oGoods[i].checked=allSel;
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    <input type="checkbox" name="goods" value="4000"/> 笔记本电脑4000元<br/>
+    <input type="checkbox" name="goods" value="4000"/> 笔记本电脑4000元<br/>
+    <input type="checkbox" name="goods" value="4000"/> 笔记本电脑4000元<br/>
+    <input type="checkbox" name="goods" value="4000"/> 笔记本电脑4000元<br/>
+    <input type="checkbox" name="goods" value="4000"/> 笔记本电脑4000元<br/>
+    <input type="checkbox" name="goods" value="4000"/> 笔记本电脑4000元<br/>
+    <input type="checkbox" name="goods" value="4000"/> 笔记本电脑4000元<br/>
+
+    <input type="checkbox" name="all" onclick="allSelect(this)"/> 全选/取消全选<br/>
+
+    <input type="button" name="buy" value="Buys the Money is" onclick="getSum()"/>
+    <b id="sum"></b>
+
+</body>
+</html>

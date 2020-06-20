@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>模块化</title>
+    <style type="text/css">
+        header{
+            background-color:darkorange;
+            height: 100px;
+        }
+        nav{
+            background-color: yellow;
+            height: 30px;
+        }
+        div div.ml{
+            background-color:seagreen;
+            height: 700px;
+            width: 30%;     /* 可以通过百分比设置宽度*/
+            display: inline-block;
+        }
+        div div.mr{
+            background-color:fuchsia;
+            height: 700px;
+            width: 69.6%;
+            display: inline-block;
+        }
+        footer{
+            background-color: darkblue;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>  <!--语义化标签,页面头部,可以定义多个-->
+        <img src="5673be6ce4d7e.jpg" height="100" alt="lovegreen" />
+        <a href="http://www.xiapeixin.top" target="_blank"> 夏培鑫</a>
+    </header>
+    <nav>       <!--语义化标签,导航栏-->
+        导航栏
+    </nav>
+
+    <article> <!--语义化标签,独立的区域-->
+        独立的区域
+    </article>
+    <aside> <!--语义化标签,测边栏-->
+        测边栏
+    </aside>
+    <time datetime="2018-06-07">
+        Money
+    </time>
+    <ruby>
+        夏<rt>xia</rt>
+        <rp>不能正常显示</rp>
+    </ruby>
+    <details>
+        <summary>
+            点击查看更多
+        </summary>
+        <h1>点击后可以看到这段文字</h1>
+        <h2>点击后可以看到这段文字</h2>
+        <a href="http://www.xiapeixin.top" target="_blank"> 夏培鑫</a>
+        <p>
+            public
+        </p>
+    </details>
+     public static <mark>void</mark> main(String [] args) <!--高亮关键字-->
+    <hr/>
+    <progress value="10" max="100">
+      进度条
+    </progress>
+
+    <section>
+        <h1>
+            代替div进行页面布局
+        </h1>
+    </section>
+    <hr/>
+    <video src="test.mp4" controls="controls" height="720" width="1600">
+        <source src="test.mp4" type="video/mp4">
+        <source src="test.ogg" type="video/ogg">
+        <source src="test.webm" type="video/webm">
+        如果上面的视频格式都不能播放,提示浏览器不支持
+    </video>
+    <audio src="test.mp3" controls="controls" >
+        <source src="test.mp3" type="video/mpeg">
+        <source src="test.ogg" type="video/ogg">
+        如果上面的格式音频都不能播放,提示浏览器不支持
+    </audio>
+
+    <input type="text" list="myid"/>  <!--可以自己输入也可以选择输入-->
+    <datalist id="myid" >
+        <option value="java"></option>
+        <option value="sql"></option>
+        <option value="html"></option>
+    </datalist>
+
+    <embed src="y40.swf" type="application/x-shockwave-flash"> 随便写点</embed>
+            <!--加载一个flash插件-->
+
+    <canvas id="mygame">  <!--配合js配置图形-->
+
+    </canvas>
+    <div class="content">
+        <div class="ml">
+
+        </div>
+        <div class="mr">
+
+        </div>
+    </div>
+
+    <footer>  <!--语义化标签,页面尾部,可以定义多个-->
+            china-shandong-yantai-laishanqu-ciel
+    </footer>
+
+</body>
+</html>

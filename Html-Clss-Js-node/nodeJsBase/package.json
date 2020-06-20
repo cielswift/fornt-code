@@ -1,0 +1,21 @@
+{
+  "name": "xiapeixin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "AtestNodeJS.js",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "bootstrap": "^4.2.1",
+    "moment": "^2.23.0",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.9"
+  },
+  "devDependencies": {
+    "electron": "^4.0.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

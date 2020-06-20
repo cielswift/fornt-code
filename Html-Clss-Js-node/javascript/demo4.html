@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js常用对象,object,string</title>
+</head>
+    <body>
+
+    <script type="text/javascript" >
+        for (var i =0;i<3;i++){
+            document.write(i);
+        }
+        document.write(i);   //这里还能使用i;
+    </script>
+    <script type="text/javascript">
+        document.write(i);   //另一个标签,还可以使用i,js的(除了函数内定义的)变量作用于整个页面,全局变量;
+                                //函数内定义的是局部变量;
+    </script>
+    <!--////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <script type="text/javascript">
+        var arr = new Array(53,34,2);
+        alert(arr.toString());    //转为字符串,属于object对象方法;
+        alert(arr.valueOf());   //也是转字符串,属于object对象方法
+    </script>
+    <!--////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <script type="text/javascript">
+        var str = "synchronized";
+        document.write(str.bold());  //在字符串两端加入<b>this</b>标签
+        document.write(str.length);  //字符串长度
+        document.write(str.fontcolor("red"));  //字符串颜色; 加了<font color="red">this</font>标签
+        str.fontSize(22);
+        document.write(str.link("http://www.baidu.com")); //加入了a标签
+        document.write(str.substr(0,5));  //起始位置,截取长度
+        document.write(str.substring(0,3)); //起始位置,结束位置-1;
+        str.split(" ");  //将一个字符串分割为子字符串，然后将结果作为字符串数组返回
+        str.concat(" world"); //连接字符串
+        str.charAt(0); //返回指定位置的字符;
+        str.indexOf("e"); //返回字符的位置,没有返回-1;
+    </script>
+    <!--/////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <script type="text/javascript">
+
+            var my = function (l,o) {
+                    return 77;
+            }
+            //返回对象的原型;对原有对象的功能进行扩展;添加一个新方法;
+            String.prototype.name="liuxuewen";  //给原型对象添加一个(属性)新变量,名为name,值为xiapeixin;
+            String.prototype.getGirl = function (a,l) {    //直接添加方法,方法内部可以定义另一方法; 就像是java内部类;
+                this.name="wanglixin";
+                var lm = function () {
+                    return "&&&"
+                }
+                return "the girl"+this.name+lm();
+            }
+            String.prototype.getNumber =my;    //添加一个已经定义的方法;
+        //  var c = "ct".name = "liuxuewen"; //但是不要这样用对象定义,错误的,其实没有定义;
+
+        var c = "ct".name;
+        var x  = "ct".getGirl(1,2);
+        alert(c);
+        alert(x);
+
+    </script>
+    <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <script type="text/javascript">
+        String.prototype.toArrayMy=function () {
+            var arr = new Array(this.length);
+            for (var i=0;i<arr.length;i++){
+                arr[i]=this.charAt(i);
+            }
+            return arr;
+        }
+        String.prototype.reverseMy=function () {
+            var temp = "";
+            for (var i=this.length-1;i>=0;i--){
+               temp+=this.charAt(i);
+            }
+            return temp;
+        }
+        var str = "hello world";
+        var result1 = str.toArrayMy();
+        var result2 = str.reverseMy();
+        document.write(result1+"-");
+        document.write(result2);
+    </script>
+
+
+
+</body>
+</html>

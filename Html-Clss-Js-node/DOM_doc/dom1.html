@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom,window对象</title>
+</head>
+<body>
+    <div>
+    html:负责提供标签,对数据进行封装,便于对标签中的数据进行操作;<br>
+    css:负责样式属性,对标签内数据进行样式定义;<br>
+    dom:把标签型文档解析,封装成对象,定义更多的属性行为,便于操作;<br>
+    javascript: 负责提供程序设计语言,对页面的对象进行逻辑操作;<br>
+    </div>
+    <hr/>
+    <!--定义onclick处理方式-->
+    <script type="text/javascript">
+        function myJ() {  //window是浏览器对象
+            // var info = window.navigator.appVersion;  //navigator是获取浏览器平台信息的一个对象;
+            var name = navigator.appName; //浏览器名称
+           var he = window.screen.height;  //屏幕高
+            var we = window.screen.width; //屏幕宽
+
+            var info = window.location.href; //location是地址栏对象,可以多的url,或其中的主机名,端口,等;
+        // var info = window.location.href="http://www.baidu.com";//设置值;
+           alert(info);
+            window.history.back(); //上一个页面
+            window.history.forward();   //下一个页面
+            window.history.go(-1);//上一个页面
+    }
+    </script>
+    <!--定义一个事件源,注册事件关联动作;-->
+    <input type="button" name="isS" value="having sex" onclick="myJ()"/> 新的按钮
+    <hr/>
+
+    <script type="text/javascript">
+        var times;
+        function ciel() {
+            // var isY = window.confirm("确定提交吗"); //弹窗,有确定返回true,取消返回false;
+            // alert(isY);
+            //var tID = window.setTimeout("alert('m')",3000); //3秒后执行表达式; 表达式一定要用""包围;
+          var timesID = window.setInterval("alert('n')",3000); //每隔3秒执行一次;返回一个id值;
+
+            window.prompt("请输入xxx");
+        }
+        function stop() {
+            window.clearInterval(timesID);  //停止执行setInterval的方法;传入id值
+            window.clearTimeout(tID);
+        }
+        function moves() {
+           // window.moveBy(10,10); //指定偏移量,
+            window.moveTo(50,50);  //直接移动到指定的坐标点;
+        }
+        function opens() {   //打开新页面;
+            window.open("ad.html","_blank",
+                "height=200,width=400,status=no,toolbar=no,menubar=no,location=no")
+        }         //页面,新窗口打开,高,宽,
+        function closes() {
+            window.close();  //关闭当前页面
+        }
+        window.open("ad.html","_blank", "height=200,width=400,status=no,toolbar=no,menubar=no,location=no");//开启网页即弹出;
+        function focuss() {
+            window.focus();  // 赋予焦点;
+        }
+    </script>
+
+    <input type="button" name="isS" value="learns" onclick="ciel()"/>
+  <input type="button" name="isS" value="stop" onclick="stop()"/>
+    <input type="button" name="isS" value="move" onclick="moves()"/>
+     <input type="button" name="isS" value="open" onclick="opens()"/>
+     <input type="button" name="isS" value="close" onclick="closes()"/>
+    <input type="button" name="isS" value="ficus" onclick="focuss()"/>
+    <hr/>
+    <script type="text/javascript">
+        window.onunload = function () { //页面卸载完成时触发;
+            alert("1"); }
+        window.onload = function () {   //浏览器完成页面的加载后触发事件; //窗口事件,指向一个函数;
+            alert("2");
+
+        }
+        window.onbeforeunload = function () { //在页面卸载前触发事件,一般就是关闭窗口时;
+            alert("3"); }
+    </script>
+
+
+</body>
+</html>

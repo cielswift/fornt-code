@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>date</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var date1 = new Date();   //创建当前日期对象;
+       document.write(date1);
+
+      var date2 = date1.toLocaleString();//返回日期和时间字符串，该日期使用当前区域设置。
+      document.write(date2+"<br/>");
+      var date3 = date1.toLocaleDateString(); // 只返回日期字符串;
+      document.write(date3);
+
+        var date4 = date1.getFullYear();  //返回年; number类型;
+        var date5 = date1.getMonth()+1;  //返回月,因为是0-11,所以+1;
+        var date6 = date1.getDate();  // 返回日,月中的某一天;
+        var date7 = date1.getDay();  //返回日;0-6;一周的某一天;  0代表星期天,6代表星期六;
+        document.write(date5);
+        date1.getHours(); //获得小时
+        date1.getMinutes(); //获得分
+        date1.getSeconds(); //获得秒
+
+
+        date1.setTime(15966504931);  //设置毫秒值;
+        var date8 = date1.getTime(); //返回毫秒值;
+        document.write(date8);
+
+        var n1 = Date.parse("3/7/2018");  //静态方法,把字符串的日期转换为毫秒值;月日年;
+        var n2 = new Date(n1);            //根据毫秒值创建日期对象;
+        document.write(n2);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>广告,document对象</title>
+</head>
+<body>
+<!--dom按标签的层次关系对标签进行解析,形成树状结构,称为dom树;树中的标签,文本,属性称为节点也称为对象;-->
+<!--可以对树中的节点进行任意操纵,比如增删改查,实现动态页面(dhtml),但需要把整个页面加载进内存-->
+    <script type="text/javascript">
+        window.onload = function(){
+            window.open("ad.html","_blank",
+                "height=200,width=400,status=no,toolbar=no,menubar=no,location=no");
+        }
+/////////////////////////////////////////////////////////////////////////////////////////////////
+        // document对象可以对标记型文档进行封装操作,需要对节点进行操作;
+        function getDocId() {
+          var oNode =  window.document.getElementById("qax"); //通过id属性获取节点对象;
+
+            //oNode.children[0]; 获取子节点
+
+            //节点都有3个属性; 名称,类型,值;
+           window.alert(oNode.nodeName+"="+oNode.nodeType+"="+oNode.nodeValue);
+            //div节点名,1表示标签型节点,nul表示此节点用来封装数据;
+            // 1表示标签型节点,是没有值的;
+            // 2表示属性节点,可以有值的;
+            // 3表示文本节点;,可以有值的;
+
+           var text = oNode.innerText;  //获取节点对象里的文本;少用
+           alert(text);
+           var htm = oNode.innerHTML;  ////获取节点对象里html文档,包括内部标签;都用这个;而且会覆盖qax原本里面的内容;
+           alert(htm);
+          oNode.innerHTML="where is the my love?".fontcolor("red");  //改变节点内的文本内容;而是使用了html代码,可以直接执行;
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+            var lc = oNode.getElementsByTagName("b");
+            //getElementsByTagName(),   根据标签名返回节点;返回数组;
+            alert(lc[0].innerHTML);
+            alert(lc[1].innerHTML);
+        }
+        //////////////////////////////////////////////////////////////////////////////////////
+        function getDocName() {
+            var oNode = window.document.getElementsByName("ciel"); //通过name属性获取节点对象数组,因为name属性有相同的;
+            //alert(oNode[0].nodeName+"="+oNode[0].type);
+            alert(oNode[0].value);      //value可以获取它的值;也可也修改;
+        }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function getDocTagName() {
+            var oNode = window.document.getElementsByTagName("a");//通过标签名返回节点对象数组,因为标签有很多相同的;
+            oNode[0].target="_blank";  //修改标签属性,新窗口打开;
+            //alert(oNode[0].innerHTML);
+        }
+
+    </script>
+    <input type="button" value="getdocID" onclick="getDocId()"/>
+    <input type="button" value="getdocNAME" onclick="getDocName()"/>
+     <input type="button" value="getdocTAGNAME" onclick="getDocTagName()"/>
+    <div id="qax">
+       <b>i love having sex with you;</b>
+        <b>i want to sex with your wife;</b>
+        <ol>
+            <li>i want to sex with your wife;</li>
+        </ol>
+    </div>
+    <input type="text" name="ciel"/>
+    <a href="http://www.taobao.com"> but for goods </a>
+</body>
+</html>

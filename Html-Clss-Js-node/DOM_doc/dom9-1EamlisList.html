@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>邮件列表,添加删除附件</title>
+    <style type="text/css">
+        @import "tableStyle.css";
+
+        .one {
+            background-color: #3bff4c;
+        }
+
+        .two {
+            background-color: #26a1ff;
+        }
+
+        .height {
+            background-color: #ff0a2d;
+        }
+        table a{
+            text-decoration: none; /*去掉超链接的下划线*/
+        }
+    </style>
+    <script type="text/javascript">
+        function setRowColor() {
+            var oldColor;
+            var oTab = document.getElementById("emaile");
+            var oRows = oTab.rows;
+            for (var i = 1; i < oRows.length; i++) {
+                if (i % 2 != 0) {
+                    oRows[i].className = "one";
+                } else {
+                    oRows[i].className = "two";
+                }
+                oRows[i].onmouseover = function () { //给每一行添加两个事件处理方式(鼠标悬停)
+                    oldColor = this.className;   //这个this代表当前行对象,oRows[i];  oldColor=one;
+                    this.className = "height";
+                }
+                oRows[i].onmouseout = function () { //(鼠标离开)
+                    this.className = oldColor;
+                }
+            }
+        }
+
+        onload = function () {
+            setRowColor();
+        }
+
+        function query(oNde) { //全选
+            var oEms = document.getElementsByName("tht");
+            var allSel = oNde.checked;
+            for (var i = 0; i < oEms.length; i++) {
+                oEms[i].checked = allSel;
+            }
+        }
+
+        function reversed() {  //反选
+            var oEms = document.getElementsByName("tht");
+            for (var i = 0; i < oEms.length; i++) {
+                oEms[i].checked = !oEms[i].checked;
+            }
+        }
+
+        function reset() { //重置
+            var oEms = document.getElementsByName("tht");
+            for (var i = 0; i < oEms.length; i++) {
+                oEms[i].checked = false;
+            }
+        }
+
+        function deletes() { //删除所选
+            if (confirm("确定要删除吗")) {
+
+                // var oTable = document.getElementById("emaile");
+                var oEms = document.getElementsByName("tht");
+                for (var i = 0; i < oEms.length; i++) {
+                    if (oEms[i].checked) {
+                        // oTable.deleteRow(i+1);  //不能用下标来删除,因为删除第0个,第1个就变成下标0了
+                        var oRow = oEms[i].parentNode.parentNode; //通过父节点的父节点,找到行节点对象;
+                        oRow.parentNode.removeChild(oRow);  //通过它爹把它自己干掉;
+                        //也这样也不行,因为集合在删除后,长度会递减,而i在递增,删除第0个,第1个就变成下标0了,不在判断了,所以还在;
+                        i--;  //把角标向前移一位,就不会出现头尾没有删除的情况了;
+                    }
+                }
+                setRowColor(); //删除完成后重新做一次颜色间隔;
+            }
+        }
+        
+        function createInputFile() {
+            //文件选取框定义在行对象中,给表格创建新的行和单元格即可;
+            var oTab = document.getElementById("fileId");
+            var oTr = oTab.insertRow(); //创建行对象
+            var oTd_fiel = oTr.insertCell();
+            var oTd_del = oTr.insertCell(); //创建两个单元格
+
+            oTd_fiel.innerHTML="<input type=\"file\"/>";
+            oTd_del.innerHTML="<a href=\"javascript:void(0)\" onclick=\"delFile(this)\" >删除附件</a>";
+
+        }
+        function delFile(oNde) {
+            var oTr = oNde.parentNode.parentNode; //获得行节点
+
+            //var oTab = document.getElementById("fileId");
+            var oTab = oTr.parentNode;
+            //删除子节点通过document获得父节点不行呢?必须用子节点获得父节点来删除?
+
+            oTab.removeChild(oTr);
+        }
+
+    </script>
+</head>
+<body>
+<table id="emaile">
+    <tr>
+        <th>状态</th>
+        <th>发件人</th>
+        <th>邮件名称</th>
+        <th>邮件信息</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="tht"/></td>
+        <td>张三</td>
+        <td>请假</td>
+        <td>出去玩</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="tht"/></td>
+        <td>李四</td>
+        <td>请假</td>
+        <td>出去玩</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="tht"/></td>
+        <td>王五</td>
+        <td>请假</td>
+        <td>出去玩</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="tht"/></td>
+        <td>赵六</td>
+        <td>请假</td>
+        <td>出去玩</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="tht"/></td>
+        <td>韩七</td>
+        <td>请假</td>
+        <td>出去玩</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="tht"/></td>
+        <td>黄八</td>
+        <td>请假</td>
+        <td>出去玩</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" onclick="query(this)"/> 全选/取消</td>
+        <td><input type="button" onclick="reversed()" value="反选"/></td>
+        <td><input type="button" onclick="reset()" value="重置"/></td>
+        <td><input type="button" onclick="deletes()" value="删除所选邮件"/></td>
+    </tr>
+</table>
+    <hr size="5px"/>
+
+    <table id="fileId">
+        <tr>
+            <th colspan="2"> <a href="javascript:void(0)" onclick="createInputFile()">点击添加附件</a> </th>
+        </tr>
+
+    </table>
+</body>
+</html>

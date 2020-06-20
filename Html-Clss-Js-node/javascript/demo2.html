@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>语法</title>
+    <style type="text/css">
+        @import "css1.css";
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        var x=3;
+        if(2==x) {                  //建议把常量放在左边;可以加如更多的else if ;
+            alert("yes");
+        }
+        else if(3 === x){   //三个=号不仅比较值,还比较类型
+            alert("no");
+        }
+        if(x=2) {    //这里是赋值,x是2,js是弱类型,所以不为0就是true; 不建议这样写
+            alert("yes");
+        }
+        else {
+            alert("no");
+        }
+        ////////////////////////////////////////////////////////
+        var i = 9;
+        switch (i){
+            case 7:
+                alert("yes7");
+                break;
+            case 6:
+                alert("yes6");
+                break;
+            case 9:
+                alert("yes9");
+                break;
+            default:
+                alert("sss");
+                break;
+        }
+        /////////////////////////////////////////////////////////
+        // var u = 9;
+        // document.write("<font size='20'>");
+        // while(u>0){
+        //     //alert(u);
+        //     document.write(u+"<br/>");
+        //     u--;
+        // }
+        // document.write("</font=>");
+        /////////////////////////////////////////////////////////////////////
+        // for (var i=0;i<9;i++){
+        //     document.write(i+"<br/>")   //可以加入break,continue,和循环标签;
+        // }
+    document.write("<table>");
+        for (var i=1;i<=9;i++){
+             document.write("<tr>");
+            for (var p=1;p<=i;p++){
+                document.write("<td>");
+                document.write(i+"*"+p+"="+(i*p)+" ");
+                 document.write("</td>");
+            }
+           document.write("</tr>");
+        }
+    document.write("</table>");
+
+
+    </script>
+</body>
+</html>

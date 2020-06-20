@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> class选择器</title>
+
+   <style type="text/css">
+       @import url(A1.css);
+       .xia{
+           background-color: blueviolet;
+           height: 50px;
+       }
+       #oo{
+           background-color:greenyellow;
+       }
+       p b{
+           background-color: #38fffa;
+       }
+   </style>    <!--clas选择器如果前面不指定标签名,所有类名叫xia的标签都会变(.xin预定义样式,可以在需要的时候修改class的值动态效果)-->
+                <!--id选择器,前面不制定标签名,所有id是oo标签都会变,-->
+</head>
+<body>
+    <div id="oo">  <!--id选择器,通常为了标识页面中的特定区域用的,所以id一般不重复,id选择器会覆盖类选择器的样式,优先级更高-->
+        夏培鑫div
+    </div>
+    <div class="xia">  <!--class选择器,而且会覆盖掉标签选择器的样式-->
+        夏培鑫div
+    </div>
+    <p class="xia">
+        夏培鑫p
+    </p>
+    <p>              <!--标签选择器-->
+        <b>夏培鑫p</b>
+        <s>夏培鑫p</s>
+    </p>
+    <span style="background-color: purple"> <!--类属性-->
+        activate
+    </span>
+    <!--优先级,标签选择器<class选择器<id选择器<类属性--后加载覆盖先加载,优先级高的覆盖低的-->
+</body>
+</html>

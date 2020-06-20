@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> 表单</title>
+</head>
+<body>
+    <form action="http://www.google.com" method="get" name="test1" enctype="multipart/form-data">
+        <!--提交的地址也可以是本地的html页面,默认是get,给表单起名便于操作,传输数据的格式,二进制;-->
+
+        <!--代表表单的开始,name是向服务端提交的键,value是提交的值,必须有;而且用户名必填-->
+         输入文本  <input type="text" name="user" placeholder="请输入用户名" required="required"/> <br/>
+        输入密码 <input type="password" name="pass" value=""/> <br/>
+
+        选择性别 <input type="radio" name="sex" value="man"/> man
+                <input type="radio" name="sex" value="woman" checked="checked"/>  woman <br/>
+                <!--单选框,只能选一个所以把两个放进一个组里,name的值相同就可以了;
+                checked="checked",默认女-->
+
+        选择技术 <input type="checkbox" name="skill" value="Java" checked="checked"/> Java <!--复选框,默认有java-->
+                <input type="checkbox"name="skill" value="SQL"/> SQL <br/>
+
+        文本和单选框关联:  <label for="in"/>点击这些文字就可以选中单选框
+                    <input type="radio" name="tet" value="s" id="in"/><br/>
+                <!--通过for来关联一个id-->
+
+        选择文件 <input type="file" name="fielname" value="" />  <br/>
+        <!--文件要用post,因为较大,还有选择格式二进制;-->
+
+        选择图片 <input type="image" src="image\mon.jpg"/> <br/>  <!--这个图片有提交功能;-->
+
+        <fieldset>
+            <legend >健康信息</legend>
+            身高:<input type="text">
+            体重:<input type="text">
+        </fieldset>
+        <!--表单内的元素集,将元素分类-->
+        <hr/>
+
+        隐藏组建 <input type="hidden" name="hidden" value="ds"/> <br/>
+            <!--隐藏组建,某些数据自动获取,并且不需要客户端知道-->
+
+
+        按钮 <input type="button" name="button" value="一个按钮" onclick="alert('弹出')"/>  <br/>
+            <!--给这个按钮添加事件,-->
+<hr/>
+        <select name="country" size="2">  <!--下拉选择菜单,可显示的下拉菜单数量-->
+            <option value="nill">
+                选择国家
+            </option>
+            <option value="america" selected="selected"> <!--默认选择美国-->
+                美国
+            </option>
+            <option value="english">
+                英国
+            </option>
+            <option value="germany">
+                德国
+            </option>
+            <option value="huoxing" disabled="disabled" >  <!--不可选状态-->
+                火星 (不可选)
+            </option>
+        </select>
+        <hr/>
+
+        <select name="city">
+            <optgroup label="美国">
+                <option value="1">
+                    洛杉矶
+                </option>
+                <option value="2">
+                    纽约
+                </option>
+            </optgroup>
+            <optgroup label="德国">
+                <option value="3">
+                    柏林
+                </option>
+                <option value="4">
+                    汉堡
+                </option>
+            </optgroup>
+        </select>
+        <hr/>  <!--对下拉菜单进行分组,optgroup label="美国"是不可选的,表明是一个组-->
+
+
+        <br/>
+        <textarea name="txt" cols="90" rows="10" placeholder="请输入你的感言" readonly="readonly"></textarea>
+        <!--可以指定列数和行数,和提升,以及文本必填-->
+        <!--required="required"代表必填,readonly="readonly"代表只读,不能同时使用,
+            必填也可以用在其他文本框中,如type=text
+        -->
+    <hr/>
+       输入要符合邮箱格式 <input type="email"/> <br/>
+        输入要符合url地址格式 <input type="url"/> <br/>
+        输入的数字要符合要求<input type="number" name="age" min="1" max="100"/> <br/>
+        范围拖动条  <input type="range" name="len" value="30" min="10" max="90"/><br/>
+        选择时间  <input type="date" /><br/>
+        搜索类型 <input type="search"/> <br/>
+        选择颜色 <input type="color"/><br/>
+
+        <hr/>
+        <input type="reset" value="清除数据"/> <input type="submit" value="上传提交"/>
+    </form>
+</body>
+</html>

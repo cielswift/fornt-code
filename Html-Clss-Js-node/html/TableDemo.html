@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表格标签</title>
+</head>
+<body>
+    <table border="1" bordercolor="black" cellpadding="10" cellspacing="10"
+           width="500" height="500" align="center" bgcolor="#008b8b">
+        <caption>表格的标题</caption> <!--修改框线px,框线颜色,字体距单元格边距,单元格之间的距离,整个表格的宽高,表格网页中位置,背景色-->
+        <tr>
+            <th colspan="2">统计信息</th>
+        </tr>
+
+        <tr>  <!--tr行,th是标题单元格(加粗,居中),td单元格;单元格里有数据-->
+            <th>
+                姓名
+            </th>
+            <th>
+                年龄
+            </th>
+        </tr>
+        <tr><td>张三</td><td>30</td></tr>
+        <tr><td>tom</td><td>28</td></tr>
+
+        <tr> <td colspan="2"> 无名氏年龄未知</td></tr> <!--表示这个单元格占两个单元格(列)-->
+
+        <tr> <td rowspan="2"> 信息 </td><td> jack</td> </tr> <!--表示这个单元格占两个单元格(行)-->
+        <tr> <td>99 </td></tr>
+
+
+        <!--<thead> 表格头</thead> <tbody> 表格体</tbody> <tfoot>表格尾</tfoot>-->
+        <!--先数有多少行,在判断一行有几个单元格-->
+    </table>
+</body>
+</html>

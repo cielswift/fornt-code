@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript基本和运算符演示</title>
+
+</head>
+<body>
+        <script type="text/javascript">
+              alert("hello javascript")
+              //1显示一个网页弹窗,js代码必须放在script标签内才能被解释,type="text/javascript"且表明标签内的语言;
+        </script>
+
+
+    <script type="text/javascript" src="jsdemp.js">
+            //2 src="jsdemp.js" 引用一个js文件
+        //1是把js代码封装到script标签中;2是把js代码封装到js文件中,并通过src=属性进行引用;
+        //同一个标签内,如果用2进行了引用,那么1中的js代码不会被执行;
+    </script>
+
+    js由三部分组成:ecma:
+                bom:
+                dom:
+
+</body>
+<script type="text/javascript">
+    function f() {
+        alert("hell+++++++++++++++++o"); //建议把js代码放在body后,因为从上而下解析,这样最后js可以获取到body中的内容;
+    }
+    onload = function () {f();  }
+</script>
+</html>

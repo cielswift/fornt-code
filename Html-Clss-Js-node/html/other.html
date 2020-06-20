@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> 其他标签</title>
+    <base target="_blank"/> <!--所有超链接都再新窗口打开-->
+
+</head>
+<body bgcolor="#008b8b"><!--设置网页背景颜色-->
+    <big>大字体</big> <small>小字体</small> <br/>
+    <b>加粗</b> <i>斜体</i> <u>下划线</u><s>删除线</s>
+    <br/>
+    100<sup>上标</sup>   100<sub>下标</sub>
+    <br/>
+    <marquee direction="right" behavior="alternate" > <font color="#ff7f50" size="10">动态</font>  </marquee>
+    <!--从左向右,然后在反向,再从左向右--> <br/>
+    <marquee direction="right" behavior="scroll" > <font color="#ff7f50" size="10">动态</font>  </marquee>
+    <!--从左向右,到头了消失,再从左向右--> <br/>
+    <marquee direction="right" behavior="slide" > <font color="#ff7f50" size="10">动态</font>  </marquee>
+    <!--从左向右,到头就不动了,再从左向右-->
+
+    <pre>   <!--保留文本原来的格式-->
+        for (int i=0;i<100;i++)
+        {
+            break;
+        }
+    </pre>
+    <a href="demo.html"> a a </a>
+    <meta http-equiv="refresh" content="3 ;url=www.eclipse.org"/> <!--页面定时效果,3秒后跳转到-->
+
+    <hr/>
+    <div>
+        这是一个div区域,没有特殊含义带换行
+    </div>
+    <div>
+        这是一个div区域,没有特殊含义带换行
+    </div>
+    <span>
+        这是一个span区域,没有特殊含义不带换行
+    </span>
+    <span>
+        这是一个span区域,没有特殊含义不带换行
+    </span>
+    <hr/>
+    <p>
+        段落标签,前后有空行
+    </p>
+    <p>
+        段落标签,前后有空行
+    </p>
+    <hr/>
+    标签也叫元素,分两大类
+    1 块级元素,标签:标签结束后都有换行, div table from ol p
+        块级元素一般作为一个容器,里面可以放块级和行内元素,
+    2 行内元素,标签:标签结束后没有换行, select input img font
+        行内元素不可以设置宽和高
+块级元素的display属性是block,行级元素的属性是inline; 可以通过把行内元素的值强制设置为block来强制设置宽和高;
+    <a style="display: block;height: 100px;width: 300px;background-color: red"/> a是行内元素,但是可以设置宽和高;
+
+    也可以把块级元素的属性设置为display: inline-block;,来让多个块级元素在一行显示;
+</body>
+</html>
