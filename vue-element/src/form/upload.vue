@@ -12,7 +12,7 @@
 		  <el-button slot="trigger" size="small" type="primary">选取文件 dd</el-button>
 		  <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
 		</el-upload>
-
+		
 		<el-button type="primary" @click="get_depts()">aaa</el-button>
 	</div>
 </template>
